@@ -1,0 +1,191 @@
+ body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+    
+  }
+      
+      
+#content {
+  float: right ;
+  width: 80% ;
+}
+#navbar {
+  float: right;
+  width: 20%;
+}
+
+
+#wardrobe-button{
+  left: 10%;
+}
+
+
+
+div.bottom {
+    height: 200px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: none;
+    margin-bottom: none;
+    border-top: 4px solid #00ccff;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: #575757;
+}
+
+div.col {
+    float: left;
+    width: 33%;
+}
+
+.clothe-pics {
+  width: 170px;
+  height: 170px;
+}
+
+.cover-container {
+    height: 180px;
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.cover-item {
+    position: relative;
+    display: inline-block;
+    margin: 8px 8px;
+    box-shadow: 2px 2px 4px #bbb;
+    border-top-right-radius: 4px;
+    width: 116px;
+    height: 158px;
+    vertical-align: bottom;
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.uploaddiv{
+
+ 
+ /* border-style:  solid ;
+  border-color: black;
+  border-width: 10px; */
+ 
+  position: absolute;
+  top: 5%;
+  left: 36%;
+  height: 400px;
+  max-height: 700px;
+
+
+     margin: 0 auto;
+     max-width: 700px;
+}
+
+
+.page-footer{
+   background: #B993D6;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to right, #536dfe, #b388ff,#d572fe, #ff80ab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+
+.bodydiv{
+ border-color: black;
+ border-width: 5px;
+}
+
+#navbar{
+ border-color: black;
+ border-width: 5px;
+}
+
+.outfitdiv{
+  margin-right: 10;
+  border-right-color: black;
+  border-right-width: 10px;
+}
+
+#headingcal{
+  font-family: 'Zilla Slab', serif
+}
+
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+/* Month header */
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+}
+
+/* Month list */
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Previous button inside month header */
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Weekdays (Mon-Sun) */
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+/* Days (1-31) */
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color:#777;
+}
+
+/* Highlight the "current" day */
+.days li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white;
+}

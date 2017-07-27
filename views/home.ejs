@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <!---my stylesheet--->
+        <link rel="stylesheet" href="css/styles.css" />
+        <!--- to use jquery widgets, etc --->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script
+          src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+          integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+          crossorigin="anonymous">
+        
+        </script>
+        
+        <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+        <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBwcyzV5EeocT66saEJg3wlMF4_FE-rnH0",
+            authDomain: "wardrobed-3c159.firebaseapp.com",
+            databaseURL: "https://wardrobed-3c159.firebaseio.com",
+            projectId: "wardrobed-3c159",
+            storageBucket: "wardrobed-3c159.appspot.com",
+            messagingSenderId: "645783029482"
+          };
+          firebase.initializeApp(config);
+          
+        </script>   
+        
+        
+        <style>
+            label, input { display:block; }
+            input.text { margin-bottom:12px; width:95%; padding: .4em; }
+            fieldset { padding:0; border:0; margin-top:25px; }
+            h1 { font-size: 1.2em; margin: .6em 0; }
+            div#users-contain { width: 350px; margin: 20px 0; }
+            div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+            div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+            .ui-dialog .ui-state-error { paddsing: .3em; }
+            .validateTips { border: 1px solid transparent; padding: 0.3em; }
+        </style>
+      <script>
+          $( function() {
+            var dialog, form,
+         
+              // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+              emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+              name = $( "#name" ),
+              email = $( "#email" ),
+              password = $( "#password" ),
+              allFields = $( [] ).add( name ).add( email ).add( password ),
+              tips = $( ".validateTips" );
+         
+            function updateTips( t ) {
+              tips
+                .text( t )
+                .addClass( "ui-state-highlight" );
+              setTimeout(function() {
+                tips.removeClass( "ui-state-highlight", 1500 );
+              }, 500 );
+            }
+         
+            function checkLength( o, n, min, max ) {
+              if ( o.val().length > max || o.val().length < min ) {
+                o.addClass( "ui-state-error" );
+                updateTips( "Length of " + n + " must be between " +
+                  min + " and " + max + "." );
+                return false;
+              } else {
+                return true;
+              }
+            }
+         
+            function checkRegexp( o, regexp, n ) {
+              if ( !( regexp.test( o.val() ) ) ) {
+                o.addClass( "ui-state-error" );
+                updateTips( n );
+                return false;
+              } else {
+                return true;
+              }
+            }
+         
+            function addUser() {
+              var valid = true;
+              allFields.removeClass( "ui-state-error" );
+         
+              valid = valid && checkLength( name, "username", 3, 16 );
+              valid = valid && checkLength( email, "email", 6, 80 );
+              valid = valid && checkLength( password, "password", 5, 16 );
+         
+              valid = valid && checkRegexp( name, /^[a-z]([0-9a-z_\s])+$/i, "Username may consist of a-z, 0-9, underscores, spaces and must begin with a letter." );
+              valid = valid && checkRegexp( email, emailRegex, "eg. ui@jquery.com" );
+              valid = valid && checkRegexp( password, /^([0-9a-zA-Z])+$/, "Password field only allow : a-z 0-9" );
+         
+              if ( valid ) {
+                $( "#users tbody" ).append( "<tr>" +
+                  "<td>" + name.val() + "</td>" +
+                  "<td>" + email.val() + "</td>" +
+                  "<td>" + password.val() + "</td>" +
+                "</tr>" );
+                dialog.dialog( "close" );
+              }
+              return valid;
+            }
+         
+            dialog = $( "#dialog-form" ).dialog({
+              autoOpen: false,
+              height: 400,
+              width: 350,
+              modal: true,
+              buttons: {
+                "Create an account": addUser,
+                  Cancel: function() {
+                  dialog.dialog( "close" );
+                }
+              },
+              close: function() {
+                form[ 0 ].reset();
+                allFields.removeClass( "ui-state-error" );
+              }
+            });
+         
+            form = dialog.find( "form" ).on( "submit", function( event ) {
+              event.preventDefault();
+               addUser();
+            });
+         
+            $( "#create-user" ).button().on( "click", function() {
+              dialog.dialog( "open" );
+            });
+          } );
+      </script>
+
+        
+    </head>
+    <body>
+        
+        <header></header>
+        <main>
+            
+            <div class = "outfitdiv">
+                <div style = "float: left">
+                    <h2>Your Outfit</h2>
+                    <a onclick = {getClothes()} type="button" class="btn btn-primary">Generate New Outfit!</a>
+                      <div class="" id= "droppable1">
+                            
+                            
+                            <img class = "clothe-pics drop" id = "shirt-pic" src = "">
+                      </div>
+                      <br/>
+                      <div class="">
+                            
+                            <img class = "clothe-pics" id = "pant-pic" src = "">
+                      </div>
+                      <br/>
+                      <div class="">
+                            
+                            <img class = "clothe-pics" id = "shoe-pic" src = "">
+                      </div>
+                </div>
+                <div style = "float: right" >
+                    <h2>Details</h2>
+                    
+                      <div class="" id= "droppable1">
+                            
+                            
+                            <img class = "clothe-pics drop" id = "shirt-pic" src = "">
+                      </div>
+                      <br/>
+                      <div class="">
+                            
+                            <img class = "clothe-pics" id = "pant-pic" src = "">
+                      </div>
+                      <br/>
+                      <div class="">
+                            
+                            <img class = "clothe-pics" id = "shoe-pic" src = "">
+                      </div>
+                </div>
+
+              </div>
+          
+            <div class= "">
+                
+                <div class= "navdiv">
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" onclick = {downloadShirtImages()}>Active</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" onclick = {downloadPantsImages()}>Link</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Link</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Disabled</a>
+                      </li>
+                    </ul>
+                    <div id = "shirtdiv" style="overflow-y: scroll; height:400px display: none; visibility: hidden">
+                        
+                        <br/>
+                        <img id = "test" src = '' height = "50px" width = "50px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <center><input type="file" id="input" multiple  ></center><br/>
+                          <center><button class="pink darken-4 btn btn-primary waves-effect waves-light"  id= "uploadbutton" onclick = {uploadImage()}>Upload Image</button></center>
+                          <center><p id= "uploadinfo"></p></center>
+                          <center><button id="create-user" class="pink darken-4 btn waves-effect waves-light" style="display: none; visibility: hidden">Fill out info about this item</button></center>
+                        
+                    </div>
+                    <div id = "pantsdiv" style="overflow-y: scroll; height:400px display: none; visibility: hidden">
+                        
+                        <br/>
+                        <img id = "test" src = '' height = "50px" width = "50px">
+                        <img src = 'http://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw9ea8dfb6/images/hi-res/21970_NVYB.jpg?sw=750&sh=750&sm=fit&sfrm=png' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
+                        
+                    </div>
+                 
+                </div> 
+            </div>
+           <!--- <div class = "wrap">
+                
+                
+                    <div class = "blocks"id="container">
+                      <div id="content">
+                          <h2>Your Outfit</h2>
+                          <a onclick = {getClothes()} type="button" class="btn btn-primary">Generate New Outfit!</a>
+                          <div class="row" id= "droppable1">one
+                                <br/>
+                                
+                                <img class = "clothe-pics drop" id = "shirt-pic" src = "">
+                          </div>
+                          <br/>
+                          <div class="row">two
+                                <br/>
+                                <img class = "clothe-pics" id = "pant-pic" src = "">
+                          </div>
+                          <br/>
+                          <div class="row">three
+                                <br/>
+                                <img class = "clothe-pics" id = "shoe-pic" src = "">
+                          </div>
+                      </div>
+                      
+                      <div id="navbar">
+                          <h2>Details</h2>
+    
+                    </div>
+                </div>
+            
+                       <!--- <h2> Your Outfit:</h2>
+                 <div id = "table" class="bottom">
+                    <div class="col" id= "droppable1">one
+                        <br/>
+                        
+                        <img class = "clothe-pics drop" id = "shirt-pic" src = "">
+                    </div>
+                    <div class="col">two
+                        <br/>
+                        <img class = "clothe-pics" id = "pant-pic" src = "">
+                    </div>
+                    <div class="col">three
+                        <br/>
+                        <img class = "clothe-pics" id = "shoe-pic" src = "">
+                    </div>
+                </div>--->
+                
+                <div id="dialog-form" title="Create new user">
+                <p class="validateTips">All form fields are required.</p>
+               
+                <form>
+                  <fieldset>
+                    <label for="name">Give your Item a Name</label>
+                    <input type="text" name="name" id="name" value="e.g.: Red shirt" class="text ui-widget-content ui-corner-all">
+                    <label for="email">Brand Name</label>
+                    <input type="text" name="email" id="email" value="jane@smith.com" class="text ui-widget-content ui-corner-all">
+                    <label for="password">Price (if you remember it)</label>
+                    <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
+               
+                    <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                  </fieldset>
+                </form>
+              </div>
+                <script>
+                    var plaidshirt = 'https://huckberry.imgix.net/spree/products/244895/original/wNDuXqrQOs_taylor-stitch_yosemite_shirt_0_original.jpg'
+                    var blueshirt = 'https://gloimg.rosewholesale.com/ROSE/pdm-product-pic/Clothing/2016/07/27/goods-img/1473012160372349548.jpg'
+                    var pillshirt = 'http://d17ol771963kd3.cloudfront.net/126600/zo/CvAo9ZeR_cQ.jpg'
+                    var greenpants = 'https://blackdiamondequipment.com/on/demandware.static/-/Sites-bdel/default/dwcffb3d51/products/apparel/_F15/W80T_325_SAGE_Zone_Pants_Front_W_web.jpg'
+                    var bluepants = 'http://www.patagonia.com/dis/dw/image/v2/ABBM_PRD/on/demandware.static/-/Sites-patagonia-master/default/dw9ea8dfb6/images/hi-res/21970_NVYB.jpg?sw=750&sh=750&sm=fit&sfrm=png'
+                    var blueshoes = 'https://m.media-amazon.com/images/G/01/6pm/landing/2017/shoes/April/Wedges._V530666625_.jpg'
+                    var blackshoes = 'https://media.kohlsimg.com/is/image/kohls/2375536_Black_White?wid=240&hei=240&op_sharpen=1'
+                    var clothes = {
+                        shirts: [plaidshirt, blueshirt, pillshirt],
+                        pants: [greenpants, bluepants],
+                        shoes: [blueshoes, blackshoes]
+                    }
+                    console.log(clothes)
+                    
+                    var shirtslength = clothes.shirts.length
+                    console.log(shirtslength)
+                    var pantslength = clothes.pants.length
+                    var shoeslength = clothes.shoes.length
+                    
+                    function getClothes(){
+                            var rand = Math.floor(Math.random() * shirtslength)
+                            console.log(rand)
+                            var chosenshirt = clothes.shirts[rand]
+                            console.log(chosenshirt)
+                            document.getElementById('shirt-pic')
+                            .setAttribute('src', chosenshirt)
+                            rand = Math.floor(Math.random() * pantslength)
+                            var chosenpant = clothes.pants[rand]
+                            console.log(chosenpant)
+                            document.getElementById('pant-pic')
+                            .setAttribute('src', chosenpant)
+                            rand = Math.floor(Math.random() * shoeslength)
+                            var chosenshoe = clothes.shoes[rand]
+                            console.log(chosenshoe)
+                            document.getElementById('shoe-pic')
+                            .setAttribute('src', chosenshoe)
+             
+                    }
+                    
+                    
+                </script>
+                
+                
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+               <!---<div class= "navdiv">
+                    <ul class="nav nav-tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Active</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Link</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Link</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#">Disabled</a>
+                      </li>
+                    </ul>
+                </div> 
+            </div>
+        </div>
+            
+                
+            
+            
+                <!---<div class="row-fluid">
+                    <div class="col-lg-12 col-md-10 ">
+                        <div class="cover-container">
+                            <!-- START PANEL -->
+                           <!--- <div class="cover-item"  style="background-image: url('')">
+                                <img class = "drag" id = "draggable1" src = "https://huckberry.imgix.net/spree/products/244895/original/wNDuXqrQOs_taylor-stitch_yosemite_shirt_0_original.jpg" height = "50" width = "50"/>
+                                <button onclick = {}>Choose</button>
+                            </div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-1177-64ACF6EA-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-1195-057710EE-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-22127-F19D3DDB-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-20175-8E3A7E0B-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-14056-DDBA88C7-uk.jpg')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-9095-764FF4DD-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-10675-3BB4D5CC-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-5565-2680C286-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-215-ADEFD434-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-222-7775266C-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4776-BC16C44D-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-14054-05596A39-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-31747-5060EAE7-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-22122-E39143D0-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4773-675A8B93-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-245-A6F170DE-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-1603-39AFDCC8-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-35329-D0F299FE-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-237-3D52D86C-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-198-4B8CB264-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4755-AEB7312B-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4981-113699FE-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4745-43E2F6EF-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4750-A4DDD764-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-20174-1718C1E9-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-233-39F70241-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-239-9B2EF57D-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-240-E0E62DEF-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-27690-8E5AB5D9-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-9096-D0B2DED3-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-1605-B503E6EB-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-241-87512F75-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-244-4D7A3829-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-9094-1DC22E71-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-213-E32990ED-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-33170-D0F8F514-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-200-A572105A-uk.jpg')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-202-E9D87E50-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-207-AD1F1E50-uk.jpeg')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-195-4D1E1775-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-9662-51D85A9A-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-193-652EC8FE-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4982-6523598F-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4746-1C85A2CB-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-236-6AC699B0-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-1188-0D3E2CEA-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-22129-AE784E10-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-1175-0E5C2DBE-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-234-7B0FEA2F-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4744-E27CEF28-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4782-CDAAC55B-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-11509-7654E2A6-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-24717-5E377BC0-uk.png')"></div>
+                            <div class="cover-item" style="background-image: url('https://d1nexqccu6ll7z.cloudfront.net/_images/s-14-4980-CD28A46A-uk.png')"></div>
+                            <!-- END PANEL -->
+                        <!---</div>
+                    </div>
+                </div>--->
+                 
+              <!---  <script>
+                    var count;
+                    $(function() {
+                        $( ".drag" ).draggable({
+                            revert: true
+                        });
+                        $( ".drop" ).droppable({
+                            drop: function( event, ui ) {
+                                /*$( this )
+                                    .addClass( "ui-state-highlight" )
+                                    .find( "p" )
+                                        .html( "Dropped!" );*/
+                                        
+                            }
+                        });
+                        
+                        
+                    });
+                </script>--->
+        </main>
+      
+    
+    <footer class="deep-purple darken-4 page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12" id= "footer">
+
+              </div>
+              <div class="col s12">
+                <h5 class="white-text"></h5>
+                <ul>
+                    <img src = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17743828.jpg" width = "50px" height = "50px">
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    <img src = "http://res.freestockphotos.biz/pictures/15/15139-illustration-of-a-calendar-pv.png" width = "50px" height = "50px">
+                    <img src = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17743828.jpg" width = "50px" height = "50px">
+                    <img src = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17743828.jpg" width = "50px" height = "50px">
+                    <img src = "https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX17743828.jpg" width = "50px" height = "50px">
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Wardrobed
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+    </footer>
+    <script src = "javascripts/firebaseStorage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    </body>
+</html>
