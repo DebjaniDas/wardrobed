@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/styles.css" />
         <!--- to use jquery widgets, etc --->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <!---<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>--->
         <script
           src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
           integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
@@ -22,7 +22,7 @@
           var config = {
             apiKey: "AIzaSyBwcyzV5EeocT66saEJg3wlMF4_FE-rnH0",
             authDomain: "wardrobed-3c159.firebaseapp.com",
-            databaseURL: "https://wardrobed-3c159.firebaseio.com",
+            databaseURL: "https://wardrobed-3c159.firebaseio.com", 
             projectId: "wardrobed-3c159",
             storageBucket: "wardrobed-3c159.appspot.com",
             messagingSenderId: "645783029482"
@@ -32,7 +32,7 @@
         </script>   
         
         
-        <style>
+      <!---  <style>
             label, input { display:block; }
             input.text { margin-bottom:12px; width:95%; padding: .4em; }
             fieldset { padding:0; border:0; margin-top:25px; }
@@ -134,7 +134,7 @@
               dialog.dialog( "open" );
             });
           } );
-      </script>
+      </script>--->
 
         
     </head>
@@ -186,14 +186,18 @@
               </div>
           
             <div class= "">
+                                        <center><input type="file" id="input" multiple  ></center><br/>
+                          <center><button class="pink darken-4 btn btn-primary waves-effect waves-light"  id= "uploadbutton" onclick = {uploadImage()}>Upload Image</button></center>
+                          <center><p id= "uploadinfo"></p></center>
+                          <center><button id="create-user" class="pink darken-4 btn waves-effect waves-light" style="display: none; visibility: hidden">Fill out info about this item</button></center>
                 
                 <div class= "navdiv">
                     <ul class="nav nav-tabs">
                       <li class="nav-item">
-                        <a class="nav-link active" onclick = {downloadShirtImages()}>Active</a>
+                        <a class="nav-link active" onclick = {}>Active</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link active" onclick = {downloadPantsImages()}>Link</a>
+                        <a class="nav-link active" onclick = {}>Link</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link active" href="#">Link</a>
@@ -213,10 +217,7 @@
                         <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
                         <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
                         <img src = 'https://uniqlo.scene7.com/is/image/UNIQLO/goods_03_138679?$prod$' height = "100px" width = "100px">
-                        <center><input type="file" id="input" multiple  ></center><br/>
-                          <center><button class="pink darken-4 btn btn-primary waves-effect waves-light"  id= "uploadbutton" onclick = {uploadImage()}>Upload Image</button></center>
-                          <center><p id= "uploadinfo"></p></center>
-                          <center><button id="create-user" class="pink darken-4 btn waves-effect waves-light" style="display: none; visibility: hidden">Fill out info about this item</button></center>
+
                         
                     </div>
                     <div id = "pantsdiv" style="overflow-y: scroll; height:400px display: none; visibility: hidden">
@@ -282,7 +283,7 @@
                     </div>
                 </div>--->
                 
-                <div id="dialog-form" title="Create new user">
+               <!--- <div id="dialog-form" title="Create new user">
                 <p class="validateTips">All form fields are required.</p>
                
                 <form>
@@ -295,10 +296,10 @@
                     <input type="password" name="password" id="password" value="xxxxxxx" class="text ui-widget-content ui-corner-all">
                
                     <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                    <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                   <!--- <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
                   </fieldset>
                 </form>
-              </div>
+              </div>--->
                 <script>
                     var plaidshirt = 'https://huckberry.imgix.net/spree/products/244895/original/wNDuXqrQOs_taylor-stitch_yosemite_shirt_0_original.jpg'
                     var blueshirt = 'https://gloimg.rosewholesale.com/ROSE/pdm-product-pic/Clothing/2016/07/27/goods-img/1473012160372349548.jpg'

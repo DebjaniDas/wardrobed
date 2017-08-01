@@ -1,6 +1,7 @@
 var express = require('express');
 var logger = require('morgan')
 var bodyParser = require('body-parser')
+var octicons = require('octicons')
 var app = express();
 var path = require('path');
 var formidable = require('formidable');
@@ -29,17 +30,36 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(logger('dev'))
 
 app.get('/', function(req, res){
-  res.render('home.ejs')
+  res.render('signup.ejs')
 });
 
 app.get('/calendar', function(req, res){
   res.render('calendar.ejs')
 });
 
+app.get('/test2', function(req, res){
+  res.render('jquerytest.ejs')
+});
+
+app.get('/wardrobe', function(req, res){
+  res.render('wardrobe.ejs')
+});
+
 app.get('/imageupload', function(req, res){
   res.render('calendar.ejs')
 });
 
+app.get('/discover', function(req, res){
+  res.render('signup.ejs')
+});
+
+app.get('/features', function(req, res){
+  res.render('features.ejs')
+});
+
+app.get('/test', function(req, res){
+  res.render('test.ejs')
+});
 
 
 app.post('/upload', function(req, res){
