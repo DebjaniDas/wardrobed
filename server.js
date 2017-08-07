@@ -2,15 +2,10 @@ var express = require('express');
 var logger = require('morgan')
 var bodyParser = require('body-parser')
 
-var octicons = require('octicons')
 var app = express();
 var path = require('path');
-var formidable = require('formidable');
-var fs = require('fs');
 
 var admin = require('firebase-admin')
-var storage = require('firebase/storage')
-
 
 var serviceAccount = require('./wardrobed-3c159-firebase-adminsdk-t0iva-260b66cc4b.json')
 
