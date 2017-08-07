@@ -1,0 +1,240 @@
+
+.outfitheading{
+    font-family: 'Cabin', sans-serif;
+}
+
+.navbar{
+     font-family: 'Catamaran', sans-serif;
+}
+
+.btn{
+     font-family: 'Catamaran', sans-serif;
+}
+
+
+
+#generateoutfitbutton{
+    color: black;
+    left: 30%;
+    
+    
+}
+
+#collagebutton{
+    color:black;
+    
+}
+
+.wrapper {
+  margin-right: 200px;
+}
+#content {
+  min-height: 900px;
+  float: left;
+  width: 50%;
+  /*border-right: 10px solid #915f6d;*/
+  
+
+}
+#sidebar {
+  float: right;
+  width: 50%;
+  
+
+}
+#cleared {
+  clear: both;
+}
+
+#goback{
+  margin-top: 25%;
+  margin-left: 100px;
+  min-height: 100px;
+  float: left;
+ 
+}
+
+#generationdiv{
+    min-width: 155px;
+    
+}
+
+#nextoutfit{
+   margin-top: 25%;
+   margin-right: 100px;
+   max-width: 155px;
+   min-height: 100px;
+   float: right;
+
+}
+
+
+.clothediv{
+    min-height: 80px;
+    /*border: 2px solid black;*/
+    /*border: 3px solid black;*/
+}
+
+.fa-heart {
+    color: #915f6d;
+}
+
+.fa-heart-o{
+    color: #94989e;
+}
+.fa-heart-o:hover {
+    color: #915f6d;
+}
+
+/* Tooltip container */
+.tooltip {
+    /*position: relative;*/
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 20;
+
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+span:hover .tooltiptext {
+    display: none;
+}
+
+
+button.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-family: 'Cabin', sans-serif;
+    
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+button.accordion.active, button.accordion:hover {
+    background-color: #ddd;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+div.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+}
+
+.center {
+    margin-top:50px;   
+}
+
+.modal-header {
+	padding-bottom: 5px;
+	background-color: #915f6d;
+	font-family: 'Cabin', sans-serif;
+	
+}
+
+.modal-body{
+    font-family: 'Catamaran', sans-serif;
+}
+
+.modal-footer {
+    	padding: 0;
+    	
+	}
+    
+.modal-footer .btn-group button {
+	height:40px;
+	border-top-left-radius : 0;
+	border-top-right-radius : 0;
+	border: none;
+	border-right: 1px solid #ddd;
+	
+}
+	
+.modal-footer .btn-group:last-child > button {
+	border-right: 0;
+}
+
+#uploadbutton{
+    font-family: 'Catamaran', sans-serif;
+}
+
+#input{
+    font-family: 'Catamaran', sans-serif;
+}
+
+#categoryid{
+    font-family: 'Catamaran', sans-serif;
+}
+
+#nameid{
+    font-family: 'Catamaran', sans-serif;
+}
+
+.error{
+    font-family: 'Catamaran', sans-serif;
+    color: red;
+}
+
+.accordion-toggle, .accordion-body{
+    font-family: 'Catamaran', sans-serif;
+}
+
+#makeyourownheading{
+   font-family: 'Catamaran', sans-serif; 
+}
+
+#buttonarea{
+    
+    display: flex;
+}
+
+#outlinehearticon2{
+    margin-left: 100%;
+}
+
+#filledhearticon2{
+    margin-left: 100%;
+}
+
+#heading{
+   
+    display: flex;
+}
+
+.dropzone{
+    border: 2px solid black;
+    min-height: 540px;
+    min-width: 400px;
+    display: flex;
+}
+
+.fa-caret-left{
+    margin-left: 100%;
+}
+
+.fa-caret-right{
+    margin-right: 50%;
+}

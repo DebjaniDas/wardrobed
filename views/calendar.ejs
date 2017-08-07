@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wardrobed</title>
-        
+    <title>Wardrobed | Your Calendar</title>
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="icon" href="images/screen_shot_2017-07-28_at_2.38.07_pm_360.png">
         <link href="https://fonts.googleapis.com/css?family=Cabin|Cabin+Sketch|Catamaran" rel="stylesheet">
   
         
@@ -45,7 +47,7 @@
         <script>
           
           	$(document).ready(function() {
-          	    var date = new Date();
+          	  var date = new Date();
           		var d = date.getDate();
           		var m = date.getMonth();
           		var y = date.getFullYear();
@@ -110,13 +112,13 @@
           			allDaySlot: false,
           			selectHelper: true,
           			select: function(start, end, allDay) {
-          			  
+          			 // var title = prompt('Event Title:');
           				//var newUrl = "/wardrobe"
           			//	document.location.href = newUrl
           				// if (title) {
           					calendar.fullCalendar('renderEvent',
           						{
-          							title: title,
+          							title: '',
           							start: start,
           							end: end,
           							allDay: allDay
@@ -152,54 +154,112 @@
           				
           			},
           			
-          			events: [
-          				{
-          					title: 'All Day Event',
-          					start: new Date(y, m, 1)
+          		 	events: [
+          		 	  {
+          					title: '',
+          					start: new Date(y, m, 1),
+          					imageurl: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
+          				},
+          				       				{
+          					title: '',
+          					start: new Date(y, m, 2),
+          					imageurl2: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
+          				},
+          				       				{
+          					title: '',
+          					start: new Date(y, m, 3),
+          					imageurl3: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
+          				},
+          				       				{
+          					title: '',
+          					start: new Date(y, m, 4),
+          					imageurl4: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
           				},
           				{
-          					id: 999,
-          					title: 'Repeating Event',
-          					start: new Date(y, m, d-3, 16, 0),
-          					allDay: false,
-          					className: 'info'
+          					title: '',
+          					start: new Date(y, m, 5),
+          					imageurl5: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
           				},
           				{
-          					id: 999,
-          					title: 'Repeating Event',
-          					start: new Date(y, m, d+4, 16, 0),
-          					allDay: false,
-          					className: 'info'
+          					title: '',
+          					start: new Date(y, m, 6),
+          					imageurl6: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
           				},
           				{
-          					title: 'Meeting',
-          					start: new Date(y, m, d, 10, 30),
-          					allDay: false,
-          					className: 'important'
+          					title: '',
+          					start: new Date(y, m, 7),
+          					imageurl7: 'images/Screen Shot 2017-08-06 at 8.05.28 PM.png'
+          					
           				},
-          				{
-          					title: 'Lunch',
-          					start: new Date(y, m, d, 12, 0),
-          					end: new Date(y, m, d, 14, 0),
-          					allDay: false,
-          					className: 'important'
-          				},
-          				{
-          					title: 'Birthday Party',
-          					start: new Date(y, m, d+1, 19, 0),
-          					end: new Date(y, m, d+1, 22, 30),
-          					allDay: false,
-          				},
-          				{
-          					title: 'Click for Google',
-          					start: new Date(y, m, 28),
-          					end: new Date(y, m, 29),
-          					url: 'http://google.com/',
-          					className: 'success'
-          				}
-          			],			
+          				// {
+          				// 	id: 999,
+          				// 	title: 'Repeating Event',
+          				// 	start: new Date(y, m, d-3, 16, 0),
+          				// 	allDay: false,
+          				// 	className: 'info'
+          				// },
+          		// 		{
+          		// 			id: 999,
+          		// 			title: 'Repeating Event',
+          		// 			start: new Date(y, m, d+4, 16, 0),
+          		// 			allDay: false,
+          		// 			className: 'info'
+          		// 		},
+          		// 		{
+          		// 			title: 'Meeting',
+          		// 			start: new Date(y, m, d, 10, 30),
+          		// 			allDay: false,
+          		// 			className: 'important'
+          		// 		},
+          		// 		{
+          		// 			title: 'Lunch',
+          		// 			start: new Date(y, m, d, 12, 0),
+          		// 			end: new Date(y, m, d, 14, 0),
+          		// 			allDay: false,
+          		// 			className: 'important'
+          		// 		},
+          		// 		{
+          		// 			title: 'Birthday Party',
+          		// 			start: new Date(y, m, d+1, 19, 0),
+          		// 			end: new Date(y, m, d+1, 22, 30),
+          		// 			allDay: false,
+          		// 		},
+          		// 		{
+          		// 			title: 'Click for Google',
+          		// 			start: new Date(y, m, 28),
+          		// 			end: new Date(y, m, 29),
+          		// 			url: 'http://google.com/',
+          		// 			className: 'success'
+          		// 		}
+          			],
+            		eventRender: function(event, element, calEvent) {
+            		  if (event.imageurl) {
+                    element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"/images/sunflowersweater.jpg\" height = 33px /><img src=\"/images/womensjeans.jpg\" height = 33px/><img src=\"/images/ugg.92195434_std.jpg\" height =33px/>"));
+            		  } else if (event.imageurl2){
+            		    element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"/images/download-1.jpg\" height = 40px /><img src=\"/images/ac2a8e732a95b2b98bfdb3d222399393--green-pants-men-green-chinos.jpg\" height = 40px/><img src=\"/images/download-2.jpg\" height =40px/>"));
+            		  } else if (event.imageurl5){
+            		     element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"https://s-media-cache-ak0.pinimg.com/736x/19/5b/1a/195b1a1e7d43560a0e295c4bc30140ac--bralette-tops-black-bralette.jpg\" height = 40px /><img src=\"images/womensjeans.jpg\" height = 50px/><img src=\"https://s-media-cache-ak0.pinimg.com/236x/19/af/5d/19af5df2f3fe0fb692cb10a89f88ca2a--court-shoes-pump-shoes.jpg\" height = 32px/>"));
+            		  } else if (event.imageurl3){
+            		      element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"http://img.cdn2.wmgecom.com/media/catalog/product/cache/173/small_image/308x308/9df78eab33525d08d6e5fb8d27136e95/t/w/twentyonepilots_patterncircles-1.jpg\" height = 40px /><img src=\"http://scene7.zumiez.com/is/image/zumiez/pdp_hero/Crysp-Denim-Pacific-Black-Ripped-Jeans-_280370-front-US.jpg\" height = 40px/><img src=\"http://d2ob0iztsaxy5v.cloudfront.net/product/190272/1902721070m6_exlg.jpg\" height =40px/>"));
+            		  } else if (event.imageurl4){
+            		      element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"https://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=28607332\" height = 42px /><img src=\"https://upload.wikimedia.org/wikipedia/commons/9/96/COLLECTIE_TROPENMUSEUM_Rok_met_panoramische_beschildering_van_Indonesisch_landschap_TMnr_6217-7.jpg\" height = 42px/><img src=\"https://s-media-cache-ak0.pinimg.com/736x/91/be/17/91be1794d6a6dec85c52765f72e5fd5c--tan-flats-receptions.jpg\" height =25px/>"));
+            		  } else if (event.imageurl6){
+            		      element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"http://www.bananarepublic.com/products/res/thumbimg/classic-fit-lightweight-wool-floral-blazer-navy-combo-2.jpg\" height = 45px /><img src=\"https://s-media-cache-ak0.pinimg.com/736x/86/72/bd/8672bd2415a8e3ed85f4e095a5b39c44--polo-tee-shirts-ralph-lauren-tops.jpg\" height = 40px/><img src=\"http://n.nordstrommedia.com/ImageGallery/store/product/Zoom/1/_100969341.jpg?fit=fill&fm=jpg&dpr=2&h=368&w=240&quality=45\" height =40px/><img src=\"https://s-media-cache-ak0.pinimg.com/736x/57/28/05/572805a97ce36dba92a68273098d45ac--black-toms-black-flats.jpg\" height =25px/>"));
+            		  } else if (event.imageurl7){
+            		    element.find(".fc-event-title").after($("<span class=\"fc-event-icons\"></span>").html("<img src=\"images/Screen Shot 2017-08-07 at 7.13.56 AM.png\" height = 40px /><img src=\"images/Screen Shot 2017-08-07 at 7.14.00 AM.png\" height = 40px/><img src=\"images/Screen Shot 2017-08-07 at 7.15.11 AM.png\" height =30px/>"));
+            		  }
+                }
+                
+        		    // $('.fc-event').on('click','img',function(event) {
+              //       alert($(this).attr('src'));
+              //   });          			
           		});
-          		
           		
           	});
           
@@ -276,9 +336,11 @@
 
     </header>
     <main>
-      <button href = "/features" type="button" class="btn btn-default btn-small">
+      
+      <a href = "/wardrobe"><button  type="button" class="btn btn-default btn-small">
         <span class="glyphicon glyphicon-arrow-left"></span> Return to Wardrobe
-      </button>
+      </button></a>
+      <br/>
       <br/>
       
       <div id='wrap'>
@@ -289,6 +351,7 @@
       </div>
       
       <script src = "javascripts/calendar.js"></script>
+      <script src  "javascripts/calendarheart.js"></script>
     </main>
      <!---<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>--->

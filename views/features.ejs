@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wardrobed | Featured Styles</title>
+    
+    <link rel = "stylesheet" href = "css/features.css">
+    <script src="https://use.fontawesome.com/4d0a503a2b.js"></script>
+    <link rel="icon" href="images/screen_shot_2017-07-28_at_2.38.07_pm_360.png">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Cabin+Sketch|Catamaran" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Cabin:600i|Catamaran" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+    <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBwcyzV5EeocT66saEJg3wlMF4_FE-rnH0",
+            authDomain: "wardrobed-3c159.firebaseapp.com",
+            databaseURL: "https://wardrobed-3c159.firebaseio.com",
+            projectId: "wardrobed-3c159",
+            storageBucket: "wardrobed-3c159.appspot.com",
+            messagingSenderId: "645783029482"
+          };
+          firebase.initializeApp(config);
+          
+    </script> 
+  </head>
+  <body>
+    <header>
+            <nav class="navbar navbar-toggleable-md navbar navbar-inverse" style="background-color: #460432;">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               
+              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  
+                        
+        
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/features"><font size = "6">Featured</font><span class="sr-only">(current)</span></a>
+                    
+                  </li>
+                    &nbsp
+              &nbsp
+                  <li class="nav-item">
+                    <a class="nav-link" href="/wardrobe"><font size = "6">Wardrobe </font></a>
+                    
+                  </li>
+                    &nbsp
+              &nbsp
+                  <li class="nav-item">
+                    <a class="nav-link" href="/calendar"><font size = "6">Calendar</font></a>
+                  </li>
+                </ul>
+
+                <!--<center><img src = "images/ca8d548b2c2d4067b8e634032b547793_360.png" height = "60px"></center>-->
+                      &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp                &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp                &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+              <!--<div class="container">-->
+                <form novalidate class="form-inline searchbox" >
+                    <input id = "searchinput" type="search" placeholder="Search..." name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+                    <input onclick = {search()} id= "searchbutton" type="button" class="searchbox-submit" value="GO" >
+                    <span class="searchbox-icon" >GO</span>
+                    <script>
+                      function search(){
+                        var input = document.getElementById('searchinput')
+                        if (input = 'Black Shirt'){
+                            var newUrl = "/search=Black-Shirt"
+                            document.location.href = newUrl  
+                        } else if (input = 'Blue Shoes'){
+                            var newUrl = "/search=Blue-shoes"
+                            document.location.href = newUrl 
+                        } else {
+                           var newUrl = "/search"
+                           document.location.href = newUrl   
+                        }
+                    
+                        
+                    }
+                    </script>
+                </form>
+            <!--</div>-->
+            
+            
+                <!--<form class="form-inline my-2 my-lg-0">-->
+                <!--  <input class="form-control mr-sm-2 search" type="text" placeholder="Search">-->
+                <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+                <!--</form>-->
+              </div>
+            </nav>
+    </header>
+    <main>
+      <br/>
+      <h1 id= "featuresheading"><center><font size = "10px">Featured</font></center></h1>
+      <center><p id= "belowheading"> Always Updated. Always Trending.</p></center>
+      <hr>
+      <br/>
+      <div id = "featureditems">
+        <div style="float: left; width: 33%;">
+              <div class="card row" style="width: 20rem;">
+                <div class = "image-div" >
+                <img  style="width: 20rem" class="card-img-top" src= "images/Screen Shot 2017-08-06 at 11.35.29 PM.png" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                
+              
+                <div class="card-block">
+                  <h4 class="card-title">Thought: Ellseworth Bamboo Jersey Top</h4>
+                  <p class="card-text"><i>"Super effortless for weekend, casual dressing. High-low hem, mid-length sleeves and a relaxed fit in the body. Perfect to wear with jeans or our bamboo leggings."</i><br/><br/> Price: $29.90</p>
+                  
+                  <a href="https://www.wearethought.com/ellesworth-bamboo-jersey-top-light-grey-marle/" class="btn btn-outline-success" target="_blank" >Visit the site</a>
+                  &nbsp
+                  &nbsp
+                  
+                </div>
+               
+              </div>
+              <br/>
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top " src="images/Screen Shot 2017-08-05 at 8.58.29 PM.png" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">Courtshop: New Arrival! ANNIE/SOLSTICE Pants</h4>
+                  <p class="card-text"><i> "Super high-waist cropped wide-leg overalls. Adjustable straps, hidden zipper at side with hook & eye closure, slight pleating on front, stretchy smocking detail at back. True summer blue wash, 100% cotton."</i> <br/><br/>Price: $69.00</p>
+                  
+                  <a href="https://courtshop.com/new-arrivals/annie-solstice" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top" src="images/Screen Shot 2017-08-07 at 8.09.11 AM.png" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">Brookes Boswell: Jackson in Wool Felt</h4>
+                  <p class="card-text"><i>The Jackson hat has a crease in the center of the crown and no pinches. It has a 3" sewn edge brim. Sized XS (21 1/2") S (22") M (22.5") or L (23") or XL (23 1/2") and made of wool or fur felt with leather trim. </i><br/><br/>Price: $198.00</p>
+                  
+                  <a href="https://www.shopboswell.us/collections/hats-1/products/jackson-in-wool-felt" class = "btn btn-outline-success" target = "_blank">Visit the site</a>
+                </div>
+              </div>
+        </div>
+        <div style="float: left; width: 33%;">
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top" src="images/Screen Shot 2017-08-05 at 8.53.50 PM.png" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">Samantha Pleet: Dewdrop Blouse + Sprite Jeans</h4>
+                  <p class="card-text"><i>"Samantha Pleet designs the kind of eclectic styles that immediately make heads turn. Plus, A-list celebrities like Lena Dunham, Lorde and Maggie Gyllenhaal can't get enough"</i><br/><br/>Dewdrop Blouse: $25.00<br/> Sprite Jeans: $45.00</p>
+                  
+                  <a href="https://samanthapleet.com/blogs/collection-spring-summer-2017" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top" src="images/Screen Shot 2017-08-07 at 8.03.44 AM.png" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">Topman: Pinck Tencel Pleat Shorts</h4>
+                  <p class="card-text"><i>Classic fit
+<br/>Four pockets
+Pleat detail<br/>
+100% Cotton<br/>
+Machine washable<br/>
+Color:  Pink</i><br/><br/>Price: $34.00</p>
+                 
+                  <a href="" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top " src="https://www.thefashionisto.com/wp-content/uploads/2016/03/JCrew-Mens-Style-Guide-April-2016-005.jpg" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip" aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  
+                  <a href="#" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+        </div>
+        <div style="float: left; width: 33%;">
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top " src="images/Screen Shot 2017-08-05 at 9.01.08 PM.png" height = "350px"  alt="Card image cap">
+                <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">POST-IMPERIAL: SS17 Jacket</h4>
+                  <p class="card-text"><i>"Our standard jacket is constructed from Portuguese seersucker treated in "Adire" -  a rare hand dyeing process developed by the Yorubas in the Southwest region of Nigeria... Our focus was to transform an old world technique into a new form of design."</i><br/>Jacket Price: $595.00</p>
+                  
+                  <a href="https://post-imperial.com/collections/ss17-jackets" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                <img style="width: 20rem;" class="card-img-top " src="images/Screen Shot 2017-08-07 at 8.06.19 AM.png" height = "350px"  alt="Card image cap">
+                <i class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">Everlane: Women's Open Neck Tee</h4>
+                  <p class="card-text"><i>"Keep your options open. This tee has an extra-wide neckline for a more relaxed look, with an oversized silhouette to match. Sure beats a slim tee on a hot day."</i><br/><br/>Price: $15.00</p>
+                  
+                  <a href="#" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row profile-img-container" style="width: 20rem;">
+                <div class = "image-div">
+                  <img style="width: 20rem;" class="card-img-top " src="images/Screen Shot 2017-08-05 at 8.53.50 PM.png" height = "350px"  alt="Card image cap">
+                  <i  class="fa fa-bookmark-o fa-3x hidden_img clip"  aria-hidden="true"></i>
+                  <i  class="fa fa-bookmark fa-3x filledclip" aria-hidden="true" style= "display: none; visibility: hidden"></i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  
+                  <a href="#" class="btn btn-outline-success" target="_blank">Visit the site</a>
+                </div>
+              </div>
+        </div>
+
+          
+      </div>
+
+    </main>
+    
+    <script src = "javascripts/features.js"></script>
+    <!---<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>--->
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f0dfdf;
+  }
+
+  main {
+    flex: 1 0 auto;
+    
+  }
+      
+      
+.navbar{
+    font-family: 'Catamaran', sans-serif;
+}
+#featuresheading{
+    font-family: 'Cabin', sans-serif;
+}
+
+#featureditems{
+    margin-left: 10%;
+    font-family: 'Catamaran', sans-serif;
+}
+
+.btn{
+    color: #e8e9ec;
+}
+.card {
+ /*add inline-display*/
+ display: inline-block;
+}
+
+#belowheading{
+    font-family: 'Catamaran', sans-serif;
+}

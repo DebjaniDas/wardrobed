@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wardrobed | Your Closet</title>
+    <link rel = "stylesheet" href = "css/features.css">
+    <link rel = "stylesheet" href = "css/wardrobe.css">
+    
+    <script src="https://use.fontawesome.com/4d0a503a2b.js"></script>
+    <link rel="icon" href="images/screen_shot_2017-07-28_at_2.38.07_pm_360.png">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Cabin+Sketch|Catamaran" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Cabin:600i|Catamaran" rel="stylesheet"> 
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+  
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    
+   <script src =  "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    
+    <!--<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>-->
+    
+    
+
+    
+    
+    <!--<script src = "https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/js/mdb.min.js"></script>-->
+
+    
+    
+    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+    <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBwcyzV5EeocT66saEJg3wlMF4_FE-rnH0",
+            authDomain: "wardrobed-3c159.firebaseapp.com",
+            databaseURL: "https://wardrobed-3c159.firebaseio.com",
+            projectId: "wardrobed-3c159",
+            storageBucket: "wardrobed-3c159.appspot.com",
+            messagingSenderId: "645783029482"
+          };
+          firebase.initializeApp(config);
+          
+    </script> 
+  </head>
+  <body>
+    <header>
+            <nav class="navbar navbar-toggleable-md navbar navbar-inverse" style="background-color: #460432;">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               
+              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  
+                        
+        
+                  <li class="nav-item ">
+                    <a class="nav-link" href="/featured"><font size = "6">Featured</font><span class="sr-only">(current)</span></a>
+                    
+                  </li>
+                    &nbsp
+              &nbsp
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/wardrobe"><font size = "6">Wardrobe </font></a>
+                    
+                  </li>
+                    &nbsp
+              &nbsp
+                  <li class="nav-item">
+                    <a class="nav-link" href="/calendar"><font size = "6">Calendar</font></a>
+                  </li>
+                </ul>
+
+                <!--<center><img src = "images/ca8d548b2c2d4067b8e634032b547793_360.png" height = "60px"></center>-->
+                      &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp                &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp                &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+                              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+              <!--<div class="container">-->
+                <form novalidate class="form-inline searchbox">
+                    <input type="search" placeholder="Search..." name="search" class="searchbox-input" onkeyup="buttonUp();" required>
+                    <input type="submit" class="searchbox-submit" value="GO">
+                    <span class="searchbox-icon">GO</span>
+                </form>
+            <!--</div>-->
+            
+            
+                <!--<form class="form-inline my-2 my-lg-0">-->
+                <!--  <input class="form-control mr-sm-2 search" type="text" placeholder="Search">-->
+                <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+                <!--</form>-->
+              </div>
+            </nav>
+    </header>
+    <main>
+  
+    <div class="wrapper col s9" id = "canvasdiv">
+     <div id="content">
+       <br/>
+      <center><h2 class = "outfitheading">Your Closet</h2></center>
+      
+      <br/>
+      
+      <center><div class="accordion" id="accordion1">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo"><button type="button" class="btn     btn-secondary">
+              TOPS
+            </button></a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse">
+            <div class="accordion-inner">
+      
+              <!-- Here we insert another nested accordion -->
+      
+              <div class="accordion" id="accordion2">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#casualtopdiv" style="text-decoration:none; color: black ">
+                      Casual
+                    </a>
+                  </div>
+                  <div id="casualtopdiv" class="accordion-body collapse in">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseInnerTwo" style="text-decoration:none; color: black ">
+                      Work
+                    </a>
+                  </div>
+                  <div id="collapseInnerTwo" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+                                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#athletictops" style="text-decoration:none; color: black ">
+                      Athletic
+                    </a>
+                  </div>
+                  <div id="athletictops" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p id= "nothinginheretop"><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+                                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#formaltops" style="text-decoration:none; color: black ">
+                      Formal/Dressy
+                    </a>
+                  </div>
+                  <div id="formaltops" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+      
+              <!-- Inner accordion ends here -->
+      
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwenty"><button type="button" class="btn    btn-secondary">
+              SHORTS
+            </button></a>
+          </div>
+          
+          <div id="collapseTwenty" class="accordion-body collapse">
+            <div class = "accordion-inner">
+              <div class = "accordion" id = "accordion15">
+                <div class = "accordion-group">
+                  <div class = "accordion-heading">
+                    <a class = "accordion-toggle" data-toggle = "collapse" data-parent = "#accordion15" href = "#shortsdiv" style = "text-decoration:none; color:black">
+                      Casual
+                    </a>
+                </div>
+                <div id = "shortsdiv" class = "accordion-body collapse in">
+                  <div class = "accordion-inner">
+                    
+                  </div>
+                </div>
+              </div>
+              
+              <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion15" href="#athleticpants" style="text-decoration:none; color: black ">
+                     Athletic
+                    </a>
+                  </div>
+                  <div id="athleticpants" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p id= "nothinginherepants"><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+        <br/>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseFour"><button type="button" class="btn     btn-secondary">
+             PANTS
+            </button></a>
+          </div>
+          <div id="collapseFour" class="accordion-body collapse">
+            <div class="accordion-inner">
+      
+              <!-- Here we insert another nested accordion -->
+      
+              <div class="accordion" id="accordion4">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#collapseInnerOne" style="text-decoration:none; color: black ">
+                      Casual
+                    </a>
+                  </div>
+                  <div id="collapseInnerOne" class="accordion-body collapse in">
+                    <div class="accordion-inner" id = "casualpantsdiv">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#workpants" style="text-decoration:none; color: black ">
+                     Work
+                    </a>
+                  </div>
+                  <div id="workpants" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion4" href="#athleticpants" style="text-decoration:none; color: black ">
+                      Athletic
+                    </a>
+                  </div>
+                  <div id="athleticpants" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+      
+              <!-- Inner accordion ends here -->
+      
+            </div>
+          </div>
+        </div>
+        <br/>
+                <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseSix"><button type="button" class="btn     btn-secondary">
+              DRESSES
+            </button></a>
+          </div>
+          <div id="collapseSix" class="accordion-body collapse">
+            <div class="accordion-inner">
+      
+              <!-- Here we insert another nested accordion -->
+      
+              <div class="accordion" id="accordion6">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#dressdiv" style="text-decoration:none; color: black ">
+                      Work
+                    </a>
+                  </div>
+                  <div id="dressdiv" class="accordion-body collapse in dragzone">
+                    <div class="accordion-inner" >
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#casualdress" style="text-decoration:none; color: black ">
+                      Casual
+                    </a>
+                  </div>
+                  <div id="casualdress" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion6" href="#formaldress" style="text-decoration:none; color: black ">
+                      Formal/Dressy
+                    </a>
+                  </div>
+                  <div id="formaldress" class="accordion-body collapse">
+                     <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+      
+              <!-- Inner accordion ends here -->
+      
+            </div>
+          </div>
+        </div>
+        <br/>
+                <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseSeven"><button type="button" class="btn     btn-secondary">
+              SWEATERS
+            </button></a>
+          </div>
+          <div id="collapseSeven" class="accordion-body collapse">
+            <div class="accordion-inner">
+      
+              <!-- Here we insert another nested accordion -->
+      
+              <div class="accordion" id="accordion7">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle " data-toggle="collapse" data-parent="#accordion7" href="#cardigandiv" style="text-decoration:none; color: black ">
+                      Cardigans
+                    </a>
+                  </div>
+                  <div id="cardigandiv" class="accordion-body collapse in dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion7" href="#casualsweaters" style="text-decoration:none; color: black ">
+                      Zip-Ups/Sweatshirts
+                    </a>
+                  </div>
+                  <div id="casualsweaters" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      <p><font color= "#cc5500">Nothing in here yet... why don't you upload another garment?</font></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion7" href="#sweatershirtdiv" style="text-decoration:none; color: black ">
+                      Sweater Shirts
+                    </a>
+                  </div>
+                  <div id="sweatershirtdiv" class="accordion-body collapse">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>          
+      
+              <!-- Inner accordion ends here -->
+      
+            </div>
+          </div>
+        </div>
+        <br/>
+                <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseEight"><button type="button" class="btn     btn-secondary">
+              SHOES
+            </button></a>
+          </div>
+          <div id="collapseEight" class="accordion-body collapse">
+            <div class="accordion-inner">
+      
+              <!-- Here we insert another nested accordion -->
+      
+              <div class="accordion" id="accordion9">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion9" href="#shoesdiv" style="text-decoration:none; color: black ">
+                      Heels
+                    </a>
+                  </div>
+                  <div id="shoesdiv" class="accordion-body collapse in dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion9" href="#loaferdiv" style="text-decoration:none; color: black ">
+                      Loafers
+                    </a>
+                  </div>
+                  <div id="loaferdiv" class="accordion-body collapse dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion9" href="#sneaksdiv" style="text-decoration:none; color: black ">
+                      Sneakers
+                    </a>
+                  </div>
+                  <div id="sneaksdiv" class="accordion-body collapse dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion9" href="#bootsdiv" style="text-decoration:none; color: black ">
+                      Boots
+                    </a>
+                  </div>
+                  <div id="bootsdiv" class="accordion-body collapse dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>          
+      
+              <!-- Inner accordion ends here -->
+      
+            </div>
+          </div>
+        </div>
+        <br/>
+                <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTen"><button type="button" class="btn     btn-secondary">
+              ACCESSORIES
+            </button></a>
+          </div>
+          <div id="collapseTen" class="accordion-body collapse">
+            <div class="accordion-inner">
+      
+              <!-- Here we insert another nested accordion -->
+      
+              <div class="accordion" id="accordion10">
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion10" href="#jewelrydiv" style="text-decoration:none; color: black ">
+                      Jewelry
+                    </a>
+                  </div>
+                  <div id="jewelrydiv" class="accordion-body collapse in dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion10" href="#pursediv" style="text-decoration:none; color: black ">
+                      Purses/Bags
+                    </a>
+                  </div>
+                  <div id="pursediv" class="accordion-body collapse dragzone">
+                    <div class="accordion-inner">
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#hatsdiv" style="text-decoration:none; color: black ">
+                      Headwear
+                    </a>
+                  </div>
+                  <div id="hatsdiv" class="accordion-body collapse dragzone">
+                    <div class="accordion-inner">
+                     
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-group">
+                  <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#eyeweardiv" style="text-decoration:none; color: black ">
+                      Eyewear
+                    </a>
+                  </div>
+                  <div id="eyeweardiv" class="accordion-body collapse dragzone">
+                    <div class="accordion-inner">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>          
+            </div>
+          </div>
+        </div>
+      </div></center>
+      <!-- Button trigger modal -->
+      <div class="center"><center><button data-toggle="modal" data-target="#squarespaceModal" class="btn btn-lg btn-success center-block">ADD APPAREL</button></center></div>
+
+
+      <!-- line modal -->
+      <div class="modal fade" id="squarespaceModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+      	<div class="modal-content">
+      		<div class="modal-header">
+      		  <center><h3 class="modal-title" id="lineModalLabel">Upload A Garment</h3></center>
+      			<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true" onclick = {uploadAnotherImage()}>×</span><span class="sr-only">Close</span></button>
+      		</div>
+      		<div class="modal-body">
+      			
+                  <!-- content goes here -->
+      			<form>
+      			   
+      			   
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Give your garment a descriptive name:</label>
+                    <input type="email" class="form-control" id="nameid" aria-describedby="emailHelp" placeholder="e.g.: Black Jeans, Winter Coat">
+                    <p class = "error" id = "nameerror" style = "display:none; visibility:hidden">This must be filled out.</p>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect2">What category would your garment fall into?</label>
+                    <select multiple class="form-control" id="categoryid">
+                      <option id = "tops">Tops (Shirts, Blouses, Tanks)</option>
+                      <option>Skirts</option>
+                      <option>Dresses</option>
+                      <option>Shorts</option>
+                      <option>Pants</option>
+                      <option>Sweaters</option>
+                      <option>Coats/Jackets</option>
+                      <option>Scarves</option>
+                      <option>Hats</option>
+                      <option>Socks</option>
+                      <option>Shoes</option>
+                      
+                    </select>
+                    <p class = "error" id = "caterror" style = "display:none; visibility:hidden">You must choose a category.</p>
+                  </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">Choose a file to upload:</label>
+                      <br/>
+                      <input type="file" id="input" multiple>
+                      <p class = "error" id = "choosefileerror" style = "display:none; visibility:hidden">You must choose a file to upload.</p>
+                      
+                    </div>
+  
+                    <center><button type = "button" class = "btn btn-secondary"  id= "uploadbutton" onclick = {uploadImage()}>Upload Image</button></center>
+                    <br/>
+                    <div class = "success" id = "successandanother"></div>
+                      <center><p class = "doneuploading" id= "successphrase"  style = "display:none; visibility:hidden">Upload successful! Do you want to upload another garment?</p></center>
+                      
+                      <center><div class = "buttondiv">
+                        <button type = "button" class = "doneuploading btn btn-success" id = "uploadanother" onclick = {uploadAnotherImage()}  style = "display:none; visibility:hidden">Yes</button>
+                        <button type = "button" class = "doneuploading btn btn-warning" id = "noandclose" data-dismiss="modal" style = "display:none; visibility:hidden">No</button>
+                      </div></center>
+                    </div>
+                  </form>
+      
+      		</div>
+      		<div class="modal-footer">
+      		
+      		</div>
+      	</div>
+        </div>
+      </div>
+    </div>
+ 
+<div id="sidebar"><br/><center><h1 class = "outfitheading">Today's Outfit</h1></center>
+  <div id= "generatedoutfitcanvas">
+    <div id = "goback">
+      <center><i  id = "leftarrow" class="fa fa-caret-left fa-5x" aria-hidden="true"></i></center>
+    </div>
+      <div id = "nextoutfit">
+      <center><i onclick = {generateRestOfOutfits()}  class="fa fa-caret-right fa-5x" aria-hidden="true"></i></center>
+    </div>
+    <center><div id = "generationdiv">
+      <center><div id = "outfit">
+        <center><div class = "clothediv" id = "hatdiv">
+                
+        </div></center>
+        <center><div class = "clothediv" id= "semitopdiv"  >
+            
+          </div></center>
+    
+      
+         <center><div class = "clothediv" id = "topdiv"  >
+    
+         </div></center>
+    
+    
+       <center><div class = "clothediv" id = "legweardiv" >
+        
+         </div></center>
+        
+    
+      <center><div class = "clothediv" id = "shoediv"  >
+      </div></center>
+      </div></center>
+       <br/>
+      <center><div id= "likebutton">
+          <i data-toggle="tooltip" data-placement="top" title="Outfit Removed"  id = "outlinehearticon" class="fa fa-heart-o fa-2x" aria-hidden="true" onclick = {fillHeart()} style = "display:none; visibility: hidden"></i>
+      
+          <i data-toggle="tooltip" data-placement="top" title="Outfit Saved!" id = "filledhearticon" class="fa fa-heart fa-2x" aria-hidden="true" style = "display:none; visibility: hidden" onclick = {unfillHeart()}></i>
+          
+        </div></center>
+        <br/>
+       <center><div class = "buttons">
+            <button class = "btn btn-lg btn-secondary collagebutton" style = "display: inline-block" type = "button" id= "collagebutton" onclick = {clearCanvas()}>Make your Own Outfit</button>
+      </div></center>
+      
+        <!--<button id="snap">Snapshot</button>-->
+         
+      
+    </div></center>
+
+  
+ 
+      </div>
+      <center><div id = "makeyourowncanvas" style = "display: none; visibility: hidden" ondragover="allowDrop(event)" ondrop = "drop(event)">
+        <div id= "heading">
+          <p id= "makeyourownheading"> Drag and drop from your closet to arrange your outfit however you like.</p>
+        </div>
+        
+        <center><div class = "dropzone">
+          
+        </div></center>
+        
+        <div id = "buttonarea">
+          <button class = "btn btn-lg btn-secondary generateoutfitbutton" style = "display: inline-block" type = "button" id= "generateoutfitbutton" onclick = {unclearCanvas()}>Generate an Outfit for Me</button>
+          <center><i data-toggle="tooltip" data-placement="top" title="Outfit Removed"  id = "outlinehearticon2" class="fa fa-heart-o fa-2x" aria-hidden="true" onclick = {fillHeart2()} style = "display: block; visibility: visible"></i></center>
+        
+          <center><i data-toggle="tooltip" data-placement="top" title="Outfit Saved!" id = "filledhearticon2" class="fa fa-heart fa-2x" aria-hidden="true" style = "display:none; visibility: hidden" onclick = {unfillHeart2()}></i></center>
+        </div>
+        
+      </div>
+    </div></center>
+
+    </main>
+    
+    <script src = "javascripts/features.js"></script>
+    <script src = "javascripts/wardrobe.js"></script>
+    <script src = "javascripts/firebaseStorage.js"></script>
+    <script src = "javascripts/calendarheart.js"></script>
+    <!---<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>--->
+   
+    
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>-->
+  </body>
+</html>

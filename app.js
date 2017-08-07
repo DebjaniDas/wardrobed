@@ -1,6 +1,7 @@
 var express = require('express');
 var logger = require('morgan')
 var bodyParser = require('body-parser')
+
 var octicons = require('octicons')
 var app = express();
 var path = require('path');
@@ -29,12 +30,16 @@ app.use(bodyParser.urlencoded({extended:false}))
 
 app.use(logger('dev'))
 
-app.get('/', function(req, res){
+app.get('/get-started' || '/', function(req, res){
   res.render('signup.ejs')
 });
 
 app.get('/calendar', function(req, res){
   res.render('calendar.ejs')
+});
+
+app.get('/message-submitted', function(req, res){
+  res.render('success.ejs')
 });
 
 app.get('/test2', function(req, res){
@@ -44,16 +49,24 @@ app.get('/test2', function(req, res){
 app.get('/wardrobe', function(req, res){
   res.render('wardrobe.ejs')
 });
+app.get('/testing', function(req, res){
+  res.render('signup1.ejs')
+});
+
+app.get('/search', function(req, res){
+  res.render('search.ejs')
+});
 
 app.get('/imageupload', function(req, res){
   res.render('calendar.ejs')
 });
 
-app.get('/discover', function(req, res){
-  res.render('signup.ejs')
+app.get('/setup', function(req, res){
+  res.render('setup.ejs')
 });
 
-app.get('/features', function(req, res){
+
+app.get('/featured', function(req, res){
   res.render('features.ejs')
 });
 

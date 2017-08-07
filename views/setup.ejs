@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wardrobed</title>
+    <link rel = "stylesheet" href = "css/setup.css">
+    <link href="https://fonts.googleapis.com/css?family=Cabin|Cabin+Sketch|Catamaran" rel="stylesheet">
+    <link rel="icon" href="images/screen_shot_2017-07-28_at_2.38.07_pm_360.png">
+   <link href="https://fonts.googleapis.com/css?family=Cabin:600i|Catamaran" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+ 
+    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+    <script>
+          // Initialize Firebase
+          var config = {
+            apiKey: "AIzaSyBwcyzV5EeocT66saEJg3wlMF4_FE-rnH0",
+            authDomain: "wardrobed-3c159.firebaseapp.com",
+            databaseURL: "https://wardrobed-3c159.firebaseio.com",
+            projectId: "wardrobed-3c159",
+            storageBucket: "wardrobed-3c159.appspot.com",
+            messagingSenderId: "645783029482"
+          };
+          firebase.initializeApp(config);
+          
+    </script> 
+    <script>
+
+    </script>
+            <style>
+            /* The Modal (background) */
+            .modal {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            }
+            
+            /* Modal Content */
+            .modal-content {
+                background-color: white;
+                margin: auto;
+                padding: 20px;
+                border: 10px solid #f0dfdf;
+                width: 80%;
+            }
+            
+            /* The Close Button */
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            </style>
+  </head>
+  <body>
+    <header>
+            <nav class="navbar navbar-toggleable-md navbar navbar-inverse" style="background-color: #460432;">
+              <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+               
+              &nbsp 
+              &nbsp
+              &nbsp
+              &nbsp
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/features"><font size = "5">Featured</font><span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/wardrobe"><font size = "5">Wardrobe</font></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/calendar"><font size = "5">Calendar</font></a>
+                  </li>
+                </ul>
+                
+                <center><img src = "css/ca8d548b2c2d4067b8e634032b547793_360.png" height = "60px"></center>
+                
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </nav>
+    </header>
+    <main>
+          <div id="myModal" class="modal">
+                    <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <center><p><font size = "5">Welcome to Wardrobed! Fill out some quick info so we can configure your wardrobe.</font> </p></center>
+                <form>
+
+
+
+                  <div class="form-group">
+                    <label for="season"><font color= "red"><center>What categories would you like to include in your wardrobe?</center></font></label>
+                    <br/>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Tops (Shirts, Blouses, Tanks)
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Skirts
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3"> Dresses
+                        </label>
+                      </div>
+                       <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4"> Shorts
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4"> Pants (including leggings, stockings)
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4"> Sweaters
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4"> Coats/Jackets
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4"> Suits
+                        </label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4"> Shoes
+                        </label>
+                      </div>
+                  </div>
+                  <p><center>Awesome! Now upload an image of a garment or accessory of your choice so your wardrobe isn't empty!</center></p>
+                   <div class="form-group">
+                    <label for="exampleInputEmail1">Give your garment a name:</label>
+                    <input type="email" class="form-control" id="nameid" aria-describedby="emailHelp" placeholder="e.g.: Red T-shirt, Plaid dress">
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleSelect2">What category would your garment fit into?</label>
+                    <select multiple class="form-control" id="categoryid">
+                      <option id = "tops">Tops (Shirts, Blouses, Tanks) <i>(Default)</i></option>
+                      <option>Skirts</option>
+                      <option>Dresses</option>
+                      <option>Shorts</option>
+                      <option>Pants (including leggings, stockings)</option>
+                      <option>Sweaters</option>
+                      <option>Coats/Jackets</option>
+                      <option>Suits</option>
+                      <option>Shoes</option>
+
+                      
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">You're almost there! Choose a file to upload, then click the upload button below to get started!</label>
+                    <br/>
+                    <input type="file" id="input" multiple>
+                    <br/>
+                    <br/>
+                    <button type = "button"  id= "uploadbutton" onclick = {uploadImage()}>Upload Image</button>
+
+                  </div>
+                  
+                  <!---<button type="submit" class="btn btn-primary" id = "uploadbutton" onclick = {uploadImage()}>Submit and Upload</button>--->
+                </form>
+              </div>
+            </div>
+            <script>
+            // Get the modal
+            var modal = document.getElementById('myModal');
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            
+              modal.style.display = "block";
+              
+              $(document).ready(function(){
+                $("#myModal").dialog({modal: true});
+              });
+          
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            </script>
+
+      <br/>
+      <h1 id= "featuresheading"><center><font size = "10px">Featured</font></center></h1>
+      
+      <center><p id= "belowheading"> Always Updated. Always Trending.</p></center>
+      <hr>
+      <br/>
+      <div id = "featureditems">
+        <div style="float: left; width: 33%;">
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+        </div>
+        <div style="float: left; width: 33%;">
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+        </div>
+        <div style="float: left; width: 33%;">
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+              <br/>
+              <div class="card row" style="width: 20rem;">
+                <img class="card-img-top" src="https://s-media-cache-ak0.pinimg.com/originals/2c/7a/18/2c7a181d2325b1baa4182511860ac68f.jpg" height = "350px"  alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title">ZARA: Woman's Printed T-Shirt</h4>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#" class="btn btn-primary">Visit the site</a>
+                </div>
+              </div>
+        </div>
+
+          
+      </div>
+
+    </main>
+    
+    <script src = "javascripts/setup.js"></script>
+            <script src = "javascripts/firebaseAuth.js"></script>
+        <script src = "javascripts/firebaseStorage.js"></script>
+    <!---<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>--->
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
