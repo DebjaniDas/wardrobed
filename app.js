@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 
 app.use(logger('dev'))
 
-app.get('/get-started' || '/', function(req, res){
+app.get('/', function(req, res){
   res.render('signup.ejs')
 });
 
