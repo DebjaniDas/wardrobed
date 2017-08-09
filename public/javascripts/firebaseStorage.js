@@ -664,21 +664,21 @@ function updateShoes(source){
 function createImagesAndDisplayOutfitOne(){
 
   var source
-  source = imageInfo['Golden Sunglasses'].url
+  source = 'https://vignette2.wikia.nocookie.net/uncyclopedia/images/4/44/White_square.png/revision/latest?cb=20061003200043'
   var height = "50px"
   var width = "50px"
   createHat(source, height, width) // Create sunglasses accessory
 
     
-  source = imageInfo['Mens Blue Collared Shirt'].url
+ 
   createAccessory(source) // Create shirts
  
 
-  source = imageInfo['Mens Coral Pants'].url
+
   createShirt(source) // Create pants
   
     
-  source = imageInfo['Boat Shoes'].url
+
   height = "80px"
   width = "80px"
   // console.log(source)
